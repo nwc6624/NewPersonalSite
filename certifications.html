@@ -35,10 +35,9 @@
                 margin: 0;
             }
             .button, .button-countdown {
-                font-family: 'Kalam', cursive;
                 background-color: white;
-                border: 2px solid #4CAF50;
-                color: #4CAF50;
+                border: 2px solid #ccc; /* Grey border */
+                color: #333; /* Darker grey text */
                 padding: 10px 20px;
                 text-align: center;
                 text-decoration: none;
@@ -48,9 +47,11 @@
                 cursor: pointer;
                 border-radius: 5px;
                 transition: background-color 0.3s, color 0.3s;
+                font-family: Arial, sans-serif; /* Regular font for buttons */
+                vertical-align: middle; /* Center text vertically */
             }
             .button:hover, .button-countdown:hover {
-                background-color: #4CAF50;
+                background-color: #ccc;
                 color: white;
             }
             .button-countdown {
@@ -61,6 +62,7 @@
             .certification, .course {
                 margin-bottom: 20px;
                 text-align: center;
+                font-style: italic; /* Fancy/italicized font for certifications and courses */
             }
             .actions-left {
                 display: flex;
@@ -89,6 +91,7 @@
             .course-details {
                 margin: 5px 0;
                 color: black;
+                font-style: italic; /* Fancy/italicized font for course details */
             }
             .enmu {
                 background-color: #006633;
@@ -123,6 +126,11 @@
             }
             .college-logo img {
                 height: 50px;
+            }
+            .button-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
             }
         </style>
         <script>
@@ -336,6 +344,9 @@
             </section>
 
             <!-- BOTTOM BUTTONS -->    
+            <section class="button-container">
+                <a href="index.html" class="button">Return to Home</a>
+            </section>
             <section>
                 <ul class="actions">
                     <li><a href="#" class="button" onclick="openResume()">Resume</a></li>
@@ -366,4 +377,3 @@
         <script src="assets/js/main.js"></script>
     </body>
 </html>
-
