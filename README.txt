@@ -13,6 +13,15 @@ Credits:
 
 	Icons:
 		Font Awesome (fontawesome.io)
+		Images pulled from: 
+		CSU
+		CNM
+		ENMU
+		Coursera 
+		Aws 
+		Meta
+		Google
+		Google Play 
 
 	Other:
 		jQuery (jquery.com)
