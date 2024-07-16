@@ -52,7 +52,6 @@
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
             font-family: Arial, sans-serif;
-            vertical-align: middle;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -66,76 +65,55 @@
             color: white;
             border: none;
         }
-        .certification, .course {
-            margin-bottom: 20px;
-            text-align: center;
-            border: 2px solid #ccc;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: white;
-        }
-        .course-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            padding: 20px;
-        }
-        .course-column {
-            padding: 10px;
-            border-radius: 10px;
+        .accordion {
             width: 100%;
-            max-width: 300px;
-            margin: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
         }
-        .course-title {
-            font-size: 1.2em;
-            font-weight: bold;
+        .accordion-item {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
             margin-bottom: 10px;
-            text-align: center;
+            overflow: hidden;
         }
-        .course-details {
-            margin: 5px 0;
-            color: black;
-        }
-        .enmu {
-            background-color: #006633;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .cnm {
-            background-color: #FFCC00;
-            color: black;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .csu {
-            background-color: #54585A;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .college-title {
+        .accordion-header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            cursor: pointer;
             font-size: 1.5em;
             font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .college-logo {
             display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
+            align-items: center;
+            justify-content: space-between;
         }
-        .college-logo img {
-            height: 50px;
+        .accordion-header img {
+            width: 68px;
+            height: 128px;
+            object-fit: contain;
+            margin-right: 10px;
         }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+        .accordion-header span {
+            flex-grow: 1;
+            text-align: right;
+        }
+        .accordion-header:hover {
+            background-color: #e0e0e0;
+        }
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #ccc;
+        }
+        footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        footer .icons a {
+            color: white;
+            margin: 0 10px;
         }
         .actions {
             display: flex;
@@ -150,23 +128,6 @@
             margin: 5px;
             text-align: center;
         }
-        .bottom-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-top: 0;
-            padding: 0 20px;
-        }
-        footer {
-            padding: 20px;
-            background-color: #333;
-            color: white;
-        }
-        footer .icons a {
-            color: white;
-            margin: 0 10px;
-        }
         @media (max-width: 600px) {
             .button, .button-countdown {
                 padding: 8px 16px;
@@ -178,6 +139,25 @@
         function openResume() {
             window.open('resume.pdf', '_blank');
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const headers = document.querySelectorAll('.accordion-header');
+            headers.forEach(header => {
+                header.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.icon');
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    } else {
+                        content.style.display = 'block';
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body class="is-preload">
@@ -196,191 +176,251 @@
 
     <!-- Main -->
     <div id="main" style="opacity: 0" class="animated fadeIn">
-        <section id="one">
+
+        <!-- Certifications -->
+        <section id="certifications">
             <h2>Certifications</h2>
-            <div class="certification">
-                <img src="images/coursera.png" alt="Coursera logo" width="100">
-                <h3>Meta AR Developer</h3>
-                <p>Issued by Meta, June 2024</p>
-                <a href="https://coursera.org/share/e80c17934d590560f351ae0126837c23" class="button">Show credential</a>
-            </div>
-            <div class="certification">
-                <img src="images/microsoft.svg" alt="Microsoft logo" width="100">
-                <h3>Microsoft Azure Developer Associate (AZ-204)</h3>
-                <p>Issued by Microsoft, June 2024</p>
-                <a href="https://coursera.org/share/780d6f31e6d96fa9000af433a0dc49b1" class="button">Show credential</a>
-                <p>Skills: Microsoft Azure · Azure DevOps Services · Automation · Azure Virtual Machines · Azure compute solutions · azure storage</p>
-            </div>
-            <div class="certification">
-                <img src="images/aws.svg" alt="AWS logo" width="100">
-                <h3>AWS Cloud Solutions Architect Professional Certificate</h3>
-                <p>Issued by Amazon Web Services (AWS), June 2024</p>
-                <a href="https://coursera.org/share/f9130d6ccf469d6df670905a6c7ea9ad" class="button">Show credential</a>
-                <p>Skills: Data Lakes · AWS management console · cloud architecture · Serverless Computing · Amazon Web Services (AWS) · architecture on AWS · glue jobs · Amazon Redshift · Amazon Athena · Amazon Elastic MapReduce (EMR)</p>
-            </div>
-            <div class="certification">
-                <img src="images/google.svg" alt="Google logo" width="100">
-                <h3>Google AI Essentials Certification</h3>
-                <p>Issued by Google, June 2024</p>
-                <a href="https://coursera.org/share/99d44f343472825de49ef03ed0754437" class="button">Show credential</a>
-                <p>Skills: Artificial Intelligence (AI) · Machine Learning · Prompt Engineering</p>
-            </div>
-            <div class="certification">
-                <img src="images/google.svg" alt="Google logo" width="100">
-                <h3>Google Cybersecurity Professional Certificate</h3>
-                <p>Issued by Google, June 2024</p>
-                <a href="https://coursera.org/share/86bce20c4b188ae20d38dd529fc31cc0" class="button">Show credential</a>
-                <p>Skills: Python (Language) · SQL · Intrusion Detection Systems · Security Information and Event Management (SIEM) tools · Wireshark · Computer Networking</p>
-            </div>
-            <div class="certification">
-                <img src="images/google.svg" alt="Google logo" width="100">
-                <h3>Google Data Analytics Professional Certificate</h3>
-                <p>Issued by Google, June 2024</p>
-                <a href="https://coursera.org/share/8c8d2cfb3f3b60282a989b24e925014c" class="button">Show credential</a>
-                <p>Skills: R (Programming Language) · Data Analytics · Data Aggregation · SQL · Data Collection · Data Analysis · RStudio · Tableau Software</p>
-            </div>
-            <div class="certification">
-                <img src="images/google.svg" alt="Google logo" width="100">
-                <h3>Google IT Support Professional Certificate</h3>
-                <p>Issued by Google, June 2024</p>
-                <a href="https://coursera.org/share/98138e61855311f270bca47552115a56" class="button">Show credential</a>
-                <p>Skills: Technical Support · Network Protocols · encryption algorithms</p>
-            </div>
-            <div class="certification">
-                <img src="images/google.svg" alt="Google logo" width="100">
-                <h3>Google Project Management Professional Certificate</h3>
-                <p>Issued by Google, June 2024</p>
-                <a href="https://coursera.org/share/39d3f2a0a878677bfbdb3de38bd73ba0" class="button">Show credential</a>
-                <p>Skills: Agile Project Management · Scrum · Risk Management</p>
-            </div>
-            <div class="certification">
-                <img src="images/google.svg" alt="Google logo" width="100">
-                <h3>Google Play Academy - Store Listing Certificate</h3>
-                <p>Issued by Google, December 2023 (Expires December 2026)</p>
-                <a href="https://pdf.credential.net/pe78p34f_1721048409807.pdf" class="button">Show credential</a>
-                <p>Credential ID 90151351</p>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/coursera.png" alt="Coursera logo">
+                        <span>Meta AR Developer</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Meta, June 2024</p>
+                        <a href="https://coursera.org/share/e80c17934d590560f351ae0126837c23" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/microsoft.svg" alt="Microsoft logo">
+                        <span>Microsoft Azure Developer Associate (AZ-204)</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Microsoft, June 2024</p>
+                        <p>Skills: Microsoft Azure · Azure DevOps Services · Automation · Azure Virtual Machines · Azure compute solutions · azure storage</p>
+                        <a href="https://coursera.org/share/780d6f31e6d96fa9000af433a0dc49b1" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/aws.svg" alt="AWS logo">
+                        <span>AWS Cloud Solutions Architect Professional Certificate</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Amazon Web Services (AWS), June 2024</p>
+                        <p>Skills: Data Lakes · AWS management console · cloud architecture · Serverless Computing · Amazon Web Services (AWS) · architecture on AWS · glue jobs · Amazon Redshift · Amazon Athena · Amazon Elastic MapReduce (EMR)</p>
+                        <a href="https://coursera.org/share/f9130d6ccf469d6df670905a6c7ea9ad" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/google.svg" alt="Google logo">
+                        <span>Google AI Essentials Certification</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Google, June 2024</p>
+                        <p>Skills: Artificial Intelligence (AI) · Machine Learning · Prompt Engineering</p>
+                        <a href="https://coursera.org/share/99d44f343472825de49ef03ed0754437" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/google.svg" alt="Google logo">
+                        <span>Google Cybersecurity Professional Certificate</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Google, June 2024</p>
+                        <p>Skills: Python (Language) · SQL · Intrusion Detection Systems · Security Information and Event Management (SIEM) tools · Wireshark · Computer Networking</p>
+                        <a href="https://coursera.org/share/86bce20c4b188ae20d38dd529fc31cc0" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/google.svg" alt="Google logo">
+                        <span>Google Data Analytics Professional Certificate</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Google, June 2024</p>
+                        <p>Skills: R (Programming Language) · Data Analytics · Data Aggregation · SQL · Data Collection · Data Analysis · RStudio · Tableau Software</p>
+                        <a href="https://coursera.org/share/8c8d2cfb3f3b60282a989b24e925014c" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/google.svg" alt="Google logo">
+                        <span>Google IT Support Professional Certificate</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Google, June 2024</p>
+                        <p>Skills: Technical Support · Network Protocols · encryption algorithms</p>
+                        <a href="https://coursera.org/share/98138e61855311f270bca47552115a56" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/google.svg" alt="Google logo">
+                        <span>Google Project Management Professional Certificate</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Google, June 2024</p>
+                        <p>Skills: Agile Project Management · Scrum · Risk Management</p>
+                        <a href="https://coursera.org/share/39d3f2a0a878677bfbdb3de38bd73ba0" class="button">Show credential</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/google.svg" alt="Google logo">
+                        <span>Google Play Academy - Store Listing Certificate</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Issued by Google, December 2023 (Expires December 2026)</p>
+                        <p>Credential ID 90151351</p>
+                        <a href="https://pdf.credential.net/pe78p34f_1721048409807.pdf" class="button">Show credential</a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Relevant Courses -->
-        <section id="two" class="course-section">
+        <section id="two">
             <h2>Relevant Courses</h2>
-            <div class="course-column">
-                <div class="college-logo">
-                    <img src="images/csu_logo.png" alt="Colorado State University logo">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/csu_logo.png" alt="Colorado State University logo">
+                        <span>Colorado State University</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="course">
+                            <div class="course-title">Physical Geology I</div>
+                            <div class="course-details">Geol 1110/L</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="college-title csu">Colorado State University</div>
-                <div class="course csu">
-                    <div class="course-title">Physical Geology I</div>
-                    <div class="course-details">Geol 1110/L</div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/cnm_logo.jpeg" alt="Central New Mexico Community College logo">
+                        <span>Central New Mexico Community College</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="course">
+                            <div class="course-title">C++ I & Python I</div>
+                            <div class="course-details">CIS 1275 & CIS 1250</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Computer & Network Ethics</div>
+                            <div class="course-details">CIS 1858</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Calculus I & II</div>
+                            <div class="course-details">Math 1510 & 1520</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Applied Ordinary Differential Equations</div>
+                            <div class="course-details">Math 2410</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Applied Linear Algebra</div>
+                            <div class="course-details">Math 2420</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Calculus Based Physics I</div>
+                            <div class="course-details">Phys 1310/L</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">General Chemistry I & II for STEM Majors</div>
+                            <div class="course-details">Chem 1215/L & Chem 1225/L</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="course-column">
-                <div class="college-logo">
-                    <img src="images/cnm_logo.jpeg" alt="Central New Mexico Community College logo">
-                </div>
-                <div class="college-title cnm">Central New Mexico Community College</div>
-                <div class="course cnm">
-                    <div class="course-title">C++ I & Python I</div>
-                    <div class="course-details">CIS 1275 & CIS 1250</div>
-                </div>
-                <div class="course cnm">
-                    <div class="course-title">Computer & Network Ethics</div>
-                    <div class="course-details">CIS 1858</div>
-                </div>
-                <div class="course cnm">
-                    <div class="course-title">Calculus I & II</div>
-                    <div class="course-details">Math 1510 & 1520</div>
-                </div>
-                <div class="course cnm">
-                    <div class="course-title">Applied Ordinary Differential Equations</div>
-                    <div class="course-details">Math 2410</div>
-                </div>
-                <div class="course cnm">
-                    <div class="course-title">Applied Linear Algebra</div>
-                    <div class="course-details">Math 2420</div>
-                </div>
-                <div class="course cnm">
-                    <div class="course-title">Calculus Based Physics I</div>
-                    <div class="course-details">Phys 1310/L</div>
-                </div>
-                <div class="course cnm">
-                    <div class="course-title">General Chemistry I & II for STEM Majors</div>
-                    <div class="course-details">Chem 1215/L & Chem 1225/L</div>
-                </div>
-            </div>
-            <div class="course-column">
-                <div class="college-logo">
-                    <img src="images/enmu_logo.svg" alt="Eastern New Mexico University logo">
-                </div>
-                <div class="college-title enmu">Eastern New Mexico University - Portales</div>
-                <div class="course enmu">
-                    <div class="course-title">Information Systems for Managers</div>
-                    <div class="course-details">BCIS 301</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">International Business</div>
-                    <div class="course-details">Bus 310</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Technical Report Writing</div>
-                    <div class="course-details">Engl 305</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Intro to Computer Organization and Architecture</div>
-                    <div class="course-details">EET 340/L</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Circuit Analysis</div>
-                    <div class="course-details">EET 110/L</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Logic Circuits</div>
-                    <div class="course-details">EET 241/L</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Discrete Mathematics for Computer Science</div>
-                    <div class="course-details">CS 220</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Programming Language Concepts</div>
-                    <div class="course-details">CS 301</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Web Application/Development</div>
-                    <div class="course-details">CS 344</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Data Structures</div>
-                    <div class="course-details">CS 357</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Database Design and Program</div>
-                    <div class="course-details">CS 359</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Computer Networks</div>
-                    <div class="course-details">CS 440</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Design and Analysis of Algorithms</div>
-                    <div class="course-details">CS 451</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Software Engineering</div>
-                    <div class="course-details">CS 472</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Applied Machine Learning</div>
-                    <div class="course-details">CS 460</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Mobile Application Development</div>
-                    <div class="course-details">CS 458</div>
-                </div>
-                <div class="course enmu">
-                    <div class="course-title">Operating Systems</div>
-                    <div class="course-details">CS 461</div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <img src="images/enmu_logo.svg" alt="Eastern New Mexico University logo">
+                        <span>Eastern New Mexico University - Portales</span>
+                        <i class="icon fa fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="course">
+                            <div class="course-title">Information Systems for Managers</div>
+                            <div class="course-details">BCIS 301</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">International Business</div>
+                            <div class="course-details">Bus 310</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Technical Report Writing</div>
+                            <div class="course-details">Engl 305</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Intro to Computer Organization and Architecture</div>
+                            <div class="course-details">EET 340/L</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Circuit Analysis</div>
+                            <div class="course-details">EET 110/L</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Logic Circuits</div>
+                            <div class="course-details">EET 241/L</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Discrete Mathematics for Computer Science</div>
+                            <div class="course-details">CS 220</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Programming Language Concepts</div>
+                            <div class="course-details">CS 301</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Web Application/Development</div>
+                            <div class="course-details">CS 344</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Data Structures</div>
+                            <div class="course-details">CS 357</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Database Design and Program</div>
+                            <div class="course-details">CS 359</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Computer Networks</div>
+                            <div class="course-details">CS 440</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Design and Analysis of Algorithms</div>
+                            <div class="course-details">CS 451</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Software Engineering</div>
+                            <div class="course-details">CS 472</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Applied Machine Learning</div>
+                            <div class="course-details">CS 460</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Mobile Application Development</div>
+                            <div class="course-details">CS 458</div>
+                        </div>
+                        <div class="course">
+                            <div class="course-title">Operating Systems</div>
+                            <div class="course-details">CS 461</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -417,4 +457,3 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
-
