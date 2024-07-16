@@ -34,6 +34,19 @@
             #bio_description {
                 margin: 0;
             }
+            .button-countdown {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
         </style>
         <script>
             function openResume() {
@@ -48,7 +61,8 @@
             <div class="inner">
                 <!-- User Image  -->
                 <a href="#" class="image avatar"><img src="images/face_1.jpg" alt="user_face" /></a>  
-                <h1 id="bio_description"><strong> I'm Noah. <br> I am a senior at Eastern New Mexico University in the Computer Science department.</strong></h1>
+                <h1 id="bio_description"><strong> I'm Noah Caulfield. <br> I am a senior at Eastern New Mexico University in the Computer Science department, graduating this December, 2024.</strong></h1>
+                <button class="button-countdown" onclick="window.location.href='countdown.html'">Countdown until graduation</button>
                 <br/>    
                 <h2>My interests include software engineering, mobile application development, and ML/AI.</h2>
             </div>
@@ -83,17 +97,17 @@
                             <a href="https://github.com/stephen601/CS_334_WebAppProject">Albuquerque Softserve</a>
                         </h2>
                         <p class="description">CS 334: Web Application and Development, Final Project - Spring 2023 <br>
-                            Final group project using python, HTML, CSS,  bootstrap, and Flask. Working front and functional management back end for a fictional ice cream store.
+                            Final group project using python, HTML, CSS, bootstrap, and Flask. Working front and functional management back end for a fictional ice cream store.
                         </p>
                     </article>
 
                     <!-- THREE -->
                     <article class="col-6 col-12-xsmall work-item" style="text-align: center;">
-                        <a href="https://heyseth.github.io/FridgeWords/" class="image fit thumb">
+                        <a href="https://best-eastern.enmucs.com/" class="image fit thumb">
                             <img src="images/networkSimScreenshot.png" alt="" />
                         </a>
                         <h2 style="margin-top: 10px;">
-                            <a href="https://heyseth.github.io/FridgeWords/">Network Simulation in Python.</a>
+                            <a href="#">Network Simulation in Python.</a>
                         </h2>
                         <p class="description">CS 440: Computer Networks, Final Project - Spring 2023 <br>
                             I designed and implemented a discrete event network simulator in Python. I created 150 randomly connected nodes and ensured network connectivity using Depth First Search (DFS). The simulator used uniform distributions for link bandwidth and delays, and Poisson and exponential distributions for packet generation and queuing. I focused on object-oriented programming and collected detailed statistics over a 1000-second simulation run.
