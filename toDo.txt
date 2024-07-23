@@ -1,5 +1,5 @@
 TO DO:
---create certification page 
+
 --finish resume
 --secondary domain?
 --Site icon 
