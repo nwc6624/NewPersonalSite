@@ -5,8 +5,6 @@
     Strata by HTML5 UP
     html5up.net | @ajlkn
     Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-
-    Modified by Noah Caulfield July 2024  
 -->
 <html lang="en">
     <head>
@@ -88,9 +86,23 @@
                 }
             }
             /* Added styles for icons */
+            .icons-container {
+                background-color: #333;
+                padding: 10px 0;
+                text-align: center;
+                width: 100%;
+            }
+            .icons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                width: 200px; /* Adjust this width to fit your layout */
+            }
             .icons a {
                 color: white;
                 margin: 0 10px;
+                font-size: 24px;
             }
             .icons a:hover {
                 color: white;
@@ -123,6 +135,19 @@
             <section id="two">
                 <h2>Recent Projects:</h2>
                 <div class="row" style="filter: saturate(75%);">
+                    <!-- ENMU Course Reviews (New Project) -->
+                    <article class="col-6 col-12-xsmall work-item" style="text-align: center;">
+                        <a href="https://github.com/nwc6624/enmu-class-reviews-frontend/tree/main" class="image fit thumb">
+                            <img src="images/ENMUClassReviews.png" alt="ENMU Class Reviews" />
+                        </a>
+                        <h2 style="margin-top: 10px;">
+                            <a href="https://github.com/nwc6624/enmu-class-reviews-frontend/tree/main">ENMU Course Reviews</a>
+                        </h2>
+                        <p class="description">Personal Project - Summer 2024 <br>
+                            This site is an unofficial website for ENMU course reviews, written in JS, React. Hosting coming soon.
+                        </p>
+                    </article>
+
                     <!-- ONE -->
                     <article class="col-6 col-12-xsmall work-item" style="text-align: center;">
                         <a href="https://github.com/nwc6624/ENMU_CS_458_Semester_Project" class="image fit thumb">
@@ -190,11 +215,13 @@
         <!-- Footer -->
         <footer id="footer">
             <div class="inner" id="links_to_social">
-                <ul class="icons">
-                    <li><a href="https://github.com/nwc6624" class="icon brands fa-github"><span class="label">Github</span></a></li>
-                    <li><a href="https://www.linkedin.com/in/noah-caulfield/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="mailto:nocaulfield@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                </ul>
+                <div class="icons-container">
+                    <ul class="icons">
+                        <li><a href="https://github.com/nwc6624" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/noah-caulfield/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="mailto:nocaulfield@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                </div>
             </div>
         </footer>
 
